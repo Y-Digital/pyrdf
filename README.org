@@ -1,0 +1,108 @@
+#+TITLE: pyrdf
+#+OPTIONS: toc:nil num:nil
+
+# Style copied from org-ql's readme.
+
+
+* Contents
+:PROPERTIES:
+:TOC:      :include siblings :depth 0 :ignore this :force depth
+:END:
+:CONTENTS:
+- [[#screenshots][Screenshots]]
+- [[#installation][Installation]]
+- [[#usage][Usage]]
+- [[#changelog][Changelog]]
+:END:
+
+
+* Screenshots
+  :PROPERTIES:
+  :ID:       screenshots
+  :END:
+
+
+* Installation
+:PROPERTIES:
+:TOC:      ignore-children
+:ID:       installation
+:END:
+
+Clone the repository and install with
+
+#+begin_src sh
+pip install -e .
+#+end_src
+
+* Usage
+:PROPERTIES:
+:TOC:      :include descendants :depth 1
+:ID:       usage
+:END:
+
+** Querying one or more graph files using SPARQL
+
+#+begin_src sh
+pyrdf any.ttl number.ttl of.ttl turtle.ttl files.ttl -q sparql_query.sparql
+#+end_src
+
+or recursively
+
+#+begin_src sh
+pyrdf -r -q sparql_query.sparql
+#+end_src
+
+** Perform SHACL schema validation
+
+#+begin_src sh
+pyrdf graphone.ttl graphtwo.ttl -s my_schema.ttl
+#+end_src
+
+or recursively
+
+#+begin_src sh
+pyrdf -r -s my_schema.ttl
+#+end_src
+
+** Getting help
+
+   #+begin_src sh :results output :exports both
+pyrdf --help
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   usage: pyrdf [-h] [-r] (-q QUERY | -s SCHEMA) [-o OUTPUT] [-v] [files ...]
+
+   positional arguments:
+     files                 Use specific files as input
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     -r, --recursive       Use all ttl files in subdirectories
+     -q QUERY, --query QUERY
+			   SPARQL query
+     -s SCHEMA, --schema SCHEMA
+			   Schema to validate with
+     -o OUTPUT, --output OUTPUT
+			   Output format
+     -v, --verbose         Verbose logging
+   #+end_example
+
+* Changelog
+:PROPERTIES:
+:TOC:      ignore-children
+:ID:       changelog
+:END:
+
+* Notes
+:PROPERTIES:
+:TOC:      :ignore this
+:END:
+
+* License
+:PROPERTIES:
+:TOC:      :ignore this
+:END:
+
+GPLv3
